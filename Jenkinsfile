@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    parameters {
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'some description')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'execute')
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -13,11 +16,6 @@ pipeline {
         }
 
         stage('Build') {
-            when {
-                expression {
-                    BRANCH_NAME == 'master' || CODE_CHANGES == true
-                }
-            }
             steps {
                 // This stage builds your project using Maven
                 // Example: sh 'mvn clean install'
@@ -28,7 +26,7 @@ pipeline {
         stage('Run Tests') {
             when {
                 expression {
-                    BRANCH_NAME == 'master'
+                    params.executeTests
                 }
             }
             steps {
@@ -47,7 +45,7 @@ pipeline {
                 // This stage deploys your application (if applicable)
                 // Example: sh 'deploy_script.sh'
                 bat 'deploy_script.sh'
-                echo 'deploying the application'
+                echo "deploying version ${params.VERSION}"
             }
         }
     }
