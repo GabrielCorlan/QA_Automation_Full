@@ -27,6 +27,7 @@ pipeline {
                 // This stage executes your Selenium tests using TestNG
                 // Example: sh 'mvn test'
 //                 sh 'mvn test'
+                bat "mvn -D clean test"
                 echo 'testing the application'
             }
         }
