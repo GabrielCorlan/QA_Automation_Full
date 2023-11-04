@@ -9,7 +9,6 @@ pipeline {
                 // Example: git 'https://github.com/yourusername/yourrepository.git'
                 // GET THE CODE FROM GITHUB
                 git "https://github.com/GabrielCorlan/QA_Automation_Full.git"
-                echo 'checkout the application'
             }
         }
 
@@ -17,8 +16,7 @@ pipeline {
             steps {
                 // This stage builds your project using Maven
                 // Example: sh 'mvn clean install'
-                bat 'mvn clean install'
-                echo 'building the application'
+                bat 'mvn clean package'
             }
         }
 
@@ -27,8 +25,7 @@ pipeline {
                 // This stage executes your Selenium tests using TestNG
                 // Example: sh 'mvn test'
 //                 sh 'mvn test'
-                bat "mvn -D clean test"
-                echo 'testing the application'
+                bat "mvn test"
             }
         }
 
