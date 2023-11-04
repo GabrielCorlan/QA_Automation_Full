@@ -7,6 +7,7 @@ pipeline {
                 // This stage checks out the source code from your version control system
                 // For example, if you're using Git, you can use the 'git' step here
                 // Example: git 'https://github.com/yourusername/yourrepository.git'
+                // GET THE CODE FROM GITHUB
                 git "https://github.com/GabrielCorlan/QA_Automation_Full.git"
                 echo 'checkout the application'
             }
@@ -16,8 +17,8 @@ pipeline {
             steps {
                 // This stage builds your project using Maven
                 // Example: sh 'mvn clean install'
-//                 sh 'mvn clean install'
-                 echo 'building the application'
+                bat 'mvn clean install'
+                echo 'building the application'
             }
         }
 
