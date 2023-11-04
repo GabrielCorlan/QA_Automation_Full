@@ -13,14 +13,24 @@ pipeline {
         }
 
         stage('Build') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master' || CODE_CHANGES == true
+                }
+            }
             steps {
                 // This stage builds your project using Maven
                 // Example: sh 'mvn clean install'
-                bat 'mvn clean package'
+                bat 'mvn clean install'
             }
         }
 
         stage('Run Tests') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
                 // This stage executes your Selenium tests using TestNG
                 // Example: sh 'mvn test'
@@ -36,16 +46,20 @@ pipeline {
             steps {
                 // This stage deploys your application (if applicable)
                 // Example: sh 'deploy_script.sh'
-//                 sh 'deploy_script.sh'
+                bat 'deploy_script.sh'
                 echo 'deploying the application'
             }
         }
     }
 
-//     post {
-//         always {
-//             // This block will run after all stages, regardless of success or failure
-//             // For example, you can clean up resources here
-//         }
-//     }
+    post {
+        always {
+            // This block will run after all stages, regardless of success or failure
+            // For example, you can clean up resources here
+            echo "cleaning the system files"
+        }
+        failure {
+            echo "send email to somebody"
+        }
+    }
 }
