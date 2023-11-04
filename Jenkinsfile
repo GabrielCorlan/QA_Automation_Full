@@ -44,7 +44,7 @@ pipeline {
             steps {
                 // This stage deploys your application (if applicable)
                 // Example: sh 'deploy_script.sh'
-                bat 'deploy_script.sh'
+//                 bat 'deploy_script.sh'
                 echo "deploying version ${params.VERSION}"
             }
         }
