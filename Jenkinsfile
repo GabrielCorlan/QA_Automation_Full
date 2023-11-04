@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Run UI Tests') {
             when {
                 expression {
                     params.executeTests
@@ -31,9 +31,22 @@ pipeline {
             }
             steps {
                 // This stage executes your Selenium tests using TestNG
-                // Example: sh 'mvn test'
-//                 sh 'mvn test'
-                bat "mvn test"
+                // Example: sh 'mvn ui_tests'
+//                 sh 'mvn ui_tests'
+                bat "mvn ui_tests"
+            }
+        }
+
+        stage('Run API Tests') {
+            when {
+                expression {
+                    params.executeTests
+                }
+            }
+            steps {
+                // This stage executes your Selenium tests using TestNG
+                // Example: sh 'mvn ui_tests'
+                bat "mvn api_tests"
             }
         }
 

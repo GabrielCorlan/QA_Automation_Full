@@ -1,4 +1,4 @@
-package test;
+package ui_tests;
 
 import constants.Constants;
 import constants.WDWait;
