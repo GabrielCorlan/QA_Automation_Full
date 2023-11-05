@@ -9,8 +9,7 @@ public class PostUserApiTest extends BaseApiTest {
 
     @Test
     public void postNewUserTest() {
-        given()
-                .header("Content-Type", "application/json")
+        given().log().all()
                 .body(
                         " {\n" +
                                 "\"userName\": \"" + Constants.RANDOM_USERNAME + "\"," +
