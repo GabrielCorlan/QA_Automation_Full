@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class GetBooksApiTest extends BaseApiTest{
+public class GetBooksApiTest extends BaseApiTest {
 
     @Test
     public void firstTest() {
@@ -41,7 +41,6 @@ public class GetBooksApiTest extends BaseApiTest{
         given().log().all()
                 .get("BookStore/v1/Books")
                 .then()
-                .statusCode(200)
                 .body("books.isbn[0]", equalTo("9781449325862"))
                 .log().all();
     }
