@@ -50,16 +50,16 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                equals expected: true, actual: deploy
-                equals expected: false, actual: params.RUN_TESTS
-            }
+//             when {
+//                 equals expected: true, actual: deploy
+//                 equals expected: false, actual: params.RUN_TESTS
+//             }
             steps {
                 // This stage deploys your application (if applicable)
                 // Example: sh 'deploy_script.sh'
 //                 bat 'deploy_script.sh'
                 echo "deploying version ${params.VERSION}"
-                bat "mvn -U clean deploy"
+//                 bat "mvn -U clean deploy"
             }
         }
     }
