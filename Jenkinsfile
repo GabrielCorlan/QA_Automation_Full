@@ -71,12 +71,13 @@ pipeline {
             echo "cleaning the system files"
         }
         success {
-            mail(to: 'gabicorlan82@gmail.com',
-                 subject: "Successful Test Run on version: ${TEST_VERSION}",
-                 body: "Tests ran successfully, check the report.")
+//             mail(to: 'gabicorlan82@gmail.com',
+//                  subject: "Successful Test Run on version: ${TEST_VERSION}",
+//                  body: "Tests ran successfully, check the report.")
+            echo "Success Test Run"
         }
         failure {
-            echo "send email to somebody"
+            echo "Failed Test Run"
         }
     }
 }
