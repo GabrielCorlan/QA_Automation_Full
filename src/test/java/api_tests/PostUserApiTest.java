@@ -1,5 +1,6 @@
 package api_tests;
 
+import constants.Constants;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -11,9 +12,9 @@ public class PostUserApiTest extends BaseApiTest {
         given()
                 .header("Content-Type", "application/json")
                 .body(
-                        """
-                                {
-                                "userName": "romy2234",
+                        " {\n" +
+                                "\"userName\": \"" + Constants.RANDOM_USERNAME + "\"," +
+                                """
                                 "password": "Qwerty123*"
                                 }
                            """
