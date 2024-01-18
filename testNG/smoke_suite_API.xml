@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Regression">
+        <classes>
+            <class name="api_tests.user_tests.AuthorizationTest"/>
+            <class name="api_tests.user_tests.PostUserApiTest"/>
+            <class name="api_tests.books_tests.GetBooksApiTest"/>
+        </classes>
+    </test>
+</suite>

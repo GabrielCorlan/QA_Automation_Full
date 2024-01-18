@@ -31,9 +31,9 @@ pipeline {
             }
             steps {
                 // This stage executes your Selenium tests using TestNG
-                // Example: sh 'mvn ui_tests'
+                // Example: sh 'mvn tests'
 //                 sh 'mvn ui_tests'
-                bat "mvn ui_tests"
+                bat "mvn smoke_suite_UI"
             }
         }
 
@@ -44,8 +44,8 @@ pipeline {
             }
             steps {
                 // This stage executes your Selenium tests using TestNG
-                // Example: sh 'mvn ui_tests'
-                bat "mvn api_tests"
+                // Example: sh 'mvn tests'
+                bat "mvn smoke_suite_API"
             }
         }
 

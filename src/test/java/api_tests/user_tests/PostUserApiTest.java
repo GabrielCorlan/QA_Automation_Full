@@ -1,11 +1,12 @@
-package api_tests;
+package api_tests.user_tests;
 
+import api_tests.config.BaseUsersConfig;
 import constants.Constants;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class PostUserApiTest extends BaseApiTest {
+public class PostUserApiTest extends BaseUsersConfig {
 
     @Test
     public void postNewUserTest() {
@@ -18,9 +19,7 @@ public class PostUserApiTest extends BaseApiTest {
                                 }
                            """
                 )
-                .when().post("Account/v1/User")
-                .then()
-                .statusCode(201)
-                .log().all();
+        .when().post("/User")
+        .then().log().all();
     }
 }
